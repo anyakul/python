@@ -9,6 +9,5 @@ for x in [True, False]:
                 print('Не верно')
                 trigger = False
                 break
-    
 
 if trigger: print("Выражение верно")

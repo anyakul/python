@@ -3,7 +3,7 @@
 # x=2; y=4-> 1
 # x=-34; y=-30 -> 3
 
-def quarterCoordinate(x, y):
+def get_quarter_coordinate(x, y):
     if x > 0 and y > 0:
         print("1 четверть")
     elif x < 0 and y > 0:
@@ -15,6 +15,6 @@ def quarterCoordinate(x, y):
     else:
         print("На оси")
 
-x = int(input(f"x: "))
+x = int(input(f"4x: "))
 y = int(input(f"y: "))
-quarterCoordinate(x, y)
+get_quarter_coordinate(x, y)

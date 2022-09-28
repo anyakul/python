@@ -1,6 +1,6 @@
 # 9) Напишите программу, которая по заданному номеру четверти, показывает диапазон возможных координат точек в этой четверти (x и y).
 
-def quarterCoordinate(q):
+def get_range_values(q):
     if q == 1:
         print("Диапозон возможных значений: x > 0, y > 0");
     elif q == 2:
@@ -13,4 +13,4 @@ def quarterCoordinate(q):
         print("Такой четверти нет")
 
 q = int(input(f"Номер четверти: "))
-quarterCoordinate(q)
+get_range_values(q)

@@ -6,10 +6,8 @@
 def check_weekend(x):
     if a == 6 or a == 7:
         print(f"День недели {a} выходной")
-
     elif a > 0 and a < 6:
         print(f"День недели {a} будний")
-
     else:
         print(f"Дня недели {a} нет")
 

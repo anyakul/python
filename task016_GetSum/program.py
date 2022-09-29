@@ -9,16 +9,16 @@ def get_list(n):
 
     return result
 
-def get_sum(list):
-    sum = 0
-    for el in list:
-        sum += float(el)
+def get_sum(my_list):
+    sum_num = 0
+    for el in my_list:
+        sum_num += float(el)
 
-    return sum
+    return sum_num
 
 number = int(input('Число n: '))
-list = get_list(number)
-print(", ".join(list), end=".")
+my_list = get_list(number)
+print(", ".join(my_list), end=".")
 print(" ")
-res = get_sum(list)
+res = get_sum(my_list)
 print(f"Сумма чисел = {res}")

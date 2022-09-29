@@ -9,10 +9,10 @@ def get_random(count, min, max):
 
     return result
 
-def mix_list(list):
-    result = list[:]
+def mix_list(my_list):
+    result = my_list[:]
     for i in range(count + 1):
-        index = randint(0, len(list) - 1)
+        index = randint(0, len(my_list) - 1)
         temp = result[i]
         result[i] = result[index]
         result[index] = temp
@@ -23,8 +23,8 @@ count = int(input('Число чисел: '))
 min = int(input('Число min: '))
 max = int(input('Число max: '))
 
-list = get_random(count, min, max)
-print(", ".join(list), end=". ")
+my_list = get_random(count, min, max)
+print(", ".join(my_list), end=". ")
 print(" ")
-result = mix_list(list)
+result = mix_list(my_list)
 print(", ".join(result), end=".")

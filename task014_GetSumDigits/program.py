@@ -10,14 +10,15 @@ def check_float(num):
         return int(num)
 
 def get_sum_digits(number):
-    sum = 0
-    a = check_float(number)
+    sum_num = 0
 
-    while a != 0:
-        sum += a % 10
-        a = a // 10
+    num = check_float(number)
 
-    return sum
+    while num != 0:
+        sum_num += num % 10
+        num = num // 10
+
+    return sum_num
 
 number = input('Число n: ')
 result = get_sum_digits(number)

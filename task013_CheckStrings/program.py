@@ -14,6 +14,7 @@ def check_strings(string, substring):
 
     return counter
 
+
 string = ''
 substring = ''
 

@@ -9,4 +9,4 @@ data.close()
 
 with open('file.txt', 'w') as data:
     data.write('line1 \n')
-    data.write('line1 \n')
+    data.write('line2 \n')

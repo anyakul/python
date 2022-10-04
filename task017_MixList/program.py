@@ -2,12 +2,14 @@
 
 from random import randint
 
+
 def get_random(count, min, max):
     result = []
     for el in range(0, count + 1):
         result.append(str(randint(min, max)))
 
     return result
+
 
 def mix_list(my_list):
     result = my_list[:]
@@ -18,6 +20,7 @@ def mix_list(my_list):
         result[index] = temp
 
     return result
+
 
 count = int(input('Число чисел: '))
 min = int(input('Число min: '))

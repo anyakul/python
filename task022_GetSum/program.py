@@ -4,20 +4,19 @@
 import func
 
 
-def get_sum(my_list):
+def get_sum(lst):
     res = 0
 
-    for i in range(0, len(my_list)):
-        if i % 2 == 1:
-            res = res + my_list[i]
+    for i in range(1, len(lst), 2):
+        res = res + lst[i]
 
     return res
 
 
 count = int(input('Количество чисел: '))
-min = int(input('min: '))
-max = int(input('max: '))
-my_list = func.get_random(min, max, count)
-print(my_list)
-res = get_sum(my_list)
+min_num = int(input('min: '))
+max_num = int(input('max: '))
+lst = func.get_random(min_num, max_num, count)
+print(lst)
+res = get_sum(lst)
 print(f"Сумма чисел на нечётных позициях = {res}")

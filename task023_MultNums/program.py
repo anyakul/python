@@ -4,26 +4,28 @@
 
 import func
 
-def get_multi(my_list):
-    res = [];
-    j = len(my_list) - 1
-    list_len = len(my_list)
-    res_len = list_len / 2
 
-    if list_len % 2 == 1:
+def get_multi(lst):
+    res = []
+    j = len(lst) - 1
+    lst_len = len(lst)
+    res_len = lst_len / 2
+
+    if lst_len % 2 == 1:
         res_len = res_len + 1
 
     for i in range(0, int(res_len)):
-        res.append(my_list[i] * my_list[j])
+        res.append(lst[i] * lst[j])
         j -= 1
 
     return res
 
+
 count = int(input('Количество чисел: '))
-min = int(input('min: '))
-max = int(input('max: '))
-my_list = func.get_random(min, max, count)
-print(my_list)
-res = get_multi(my_list)
+min_num = int(input('min: '))
+max_num = int(input('max: '))
+lst = func.get_random(min_num, max_num, count)
+print(lst)
+res = get_multi(lst)
 print()
 print(res)

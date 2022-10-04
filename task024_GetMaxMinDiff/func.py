@@ -1,9 +1,9 @@
 import random
 
-def get_random(min, max, count):
-    my_list = []
+def get_random(min_num, max_num, count):
+    lst = []
 
     for i in range(0, count):
-        my_list.append(round(random.uniform(min, max), 2))
+        lst.append(round(random.uniform(min_num, max_num), 2))
     
-    return my_list
+    return lst

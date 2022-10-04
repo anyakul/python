@@ -3,23 +3,26 @@
 
 import func
 
-def get_diff(my_list):
-    min = my_list[0]
-    max = my_list[0]
 
-    for i in range(0, int(len(my_list))):
-        if my_list[i] > max:
-            max = my_list[i]
-        elif my_list[i] < min:
-            min = my_list[i]
+def get_diff(lst):
+    min_num = round(lst[0] % 1, 2)
+    max_num = round(lst[0] % 1, 2)
 
-    return max - min
+    for i in range(0, int(len(lst))):
+        if round(lst[i] % 1, 2) > max_num:
+            max_num = round(lst[i] % 1, 2)
+        elif round(lst[i] % 1, 2) < min_num:
+            min_num = round(lst[i] % 1, 2)
+
+    return max_num - min_num
+
 
 count = int(input('Количество чисел: '))
-min = int(input('min: '))
-max = int(input('max: '))
+min_num = int(input('min: '))
+max_num = int(input('max: '))
 
-my_list = func.get_random(min, max, count)
-print(my_list)
-res = round(get_diff(my_list), 2)
-print(f"Разница между минимальным и максимальныым числом = {res}")
+lst = func.get_random(min_num, max_num, count)
+print(lst)
+res = round(get_diff(lst), 2)
+print(
+    f"Разница между минимальной и максимальной частью дробного числа = {res}")

@@ -22,15 +22,15 @@ def get_multiples(num):
 
 def get_common_multiple(lst1, lst2):
     res = []
+    lst = zip(lst1, lst2)
 
     if lst1[0] == 1 or lst2[0] == 1:
         res.append(1)
 
-    else:
-        for i in lst1:
-            for j in lst2:
-                if i == j:
-                    res.append(i)
+    
+    for el in lst:
+        if el[0] == el[1]:
+            res.append(el[0])
 
     if len(res) == 0:
         res.append(1)

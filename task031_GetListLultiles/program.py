@@ -8,7 +8,6 @@ def get_multipliers(num):
         if num % i == 0:
             res.append(i)
             num /= i
-            i = 2
         else:
             i += 1
 

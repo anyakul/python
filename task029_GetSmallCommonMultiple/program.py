@@ -28,9 +28,11 @@ def get_common_multiple(lst1, lst2):
         res.append(1)
 
     
-    for el in lst:
-        if el[0] == el[1]:
-            res.append(el[0])
+    else:	
+        for i in lst1:
+            for j in lst2:
+                if i == j:
+                    res.append(i)
 
     if len(res) == 0:
         res.append(1)

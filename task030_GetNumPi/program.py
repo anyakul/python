@@ -4,8 +4,16 @@
 
 from math import pi
 
-n = pi
-print(n)
-d = int(input('Точность округления числа Pi: '))
-res = round(n, d)
+
+def calc_factor(num):
+    result = 0
+
+    while num % 1 > 0:
+        num *= 10
+        result += 1
+    return result
+
+
+accurancy = float(input('Введите необходимую точность: '))
+res = round(pi, calc_factor(accurancy))
 print(res)

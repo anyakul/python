@@ -22,13 +22,11 @@ def get_multiples(num):
 
 def get_common_multiple(lst1, lst2):
     res = []
-    lst = zip(lst1, lst2)
 
     if lst1[0] == 1 or lst2[0] == 1:
         res.append(1)
 
-    
-    else:	
+    else:
         for i in lst1:
             for j in lst2:
                 if i == j:
@@ -40,8 +38,8 @@ def get_common_multiple(lst1, lst2):
     return res
 
 
-num1 = int(input('число 1: '))
-num2 = int(input('число 2: '))
+num1 = int(input('Число 1: '))
+num2 = int(input('Число 2: '))
 
 lst1 = get_multiples(num1)
 lst2 = get_multiples(num2)

@@ -3,10 +3,29 @@
 import func
 
 
-def read_file(file):
-    with open(file, 'r') as data:
-        for line in data:
-            return line
+def read_file(path):
+    f = open(path, 'r')
+    data = f.read() + ' '
+    f.close()
+
+    return data
+
+
+def get_nums(data):
+    numbers = []
+
+    while data != '':
+        if 'x^' in data:
+            numbers.append(int(data[:data.index('x^')]))
+            data = data[data.index('x^')+6:]
+        elif 'x' in data:
+            numbers.append(int((data[:data.index('x')])))
+            data = data[data.index('x')+4:]
+        else:
+            numbers.append(int((data[:data.index(' ')])))
+            data = data[data.index(' ')+5:]
+
+    return numbers
 
 
 def get_sum(poly1, poly2):
@@ -17,13 +36,15 @@ def get_sum(poly1, poly2):
 
     return res
 
+#res = get_sum(koef1, koef2)
 
-k = int(input('Коэффициент: '))
-koef1 = func.create_lst(k)
-koef2 = func.create_lst(k)
-res = get_sum(koef1, koef2)
 
-func.write_file(func.create_str(koef1), 'task034_GetSumPolynomials/file1.txt')
-func.write_file(func.create_str(koef2), 'task034_GetSumPolynomials/file2.txt')
+str1 = read_file('task034_GetSumPolynomials/file1.txt')
+str2 = read_file('task034_GetSumPolynomials/file2.txt')
+
+lst1 = get_nums(str1)
+lst2 = get_nums(str2)
+
+res = get_sum(lst1[::-1], lst2[::-1])
 
 func.write_file(func.create_str(res), 'task034_GetSumPolynomials/res.txt')

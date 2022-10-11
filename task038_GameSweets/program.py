@@ -6,28 +6,35 @@
 
 from random import randint
 
-
-START_NUM = '2021'
 MODE_1 = 'computer'
 MODE_2 = 'person'
+CNT_CANDY = 100
+CNT_PLAYERS = 2
+MAX_CANDY_STEP = 28
+MIN_CANDY_STEP = 0
+
+PLAYERS_NAMES = {
+    1: 'Player_1',
+    2: 'Player_2'
+}
 
 
 def check_input(num):
-    if num < 1 or num > 28:
-        return False
-    else:
+    if num >= MIN_CANDY_STEP and num <= MAX_CANDY_STEP:
         return True
+    else:
+        return False
 
 
 def computers_move():
-    return randint(1, 28)
+    return randint(MIN_CANDY_STEP, MAX_CANDY_STEP)
 
 
 def player_move():
-    num = int(input(f'Введите число от 1 до 28: '))
+    num = int(input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
     check_input(num)
     while check_input(num) == False:
-        num = int(input(f'Введите число от 1 до 28: '))
+        num = int(input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
         check_input(num)
 
     return num
@@ -40,24 +47,38 @@ def get_win(count_move):
         print('Выиграл первый игрок')
 
 
+def get_first_move_player():
+    return randint(1, CNT_PLAYERS)
+
+
 def play_game(mode, computer_move='no'):
-    num = 100
+    num = 0
     count_move = 0
 
-    while num > 0:
+    candy_players: dict = {
+        1: 0,
+        2: 0
+    }
+
+    id_player: int = get_first_move_player()
+    computer_player: int = get_first_move_player()
+
+    while num < CNT_CANDY:
         if mode == 'person':
             input_num = player_move()
         elif mode == 'computer':
-            if count_move % 2 == computer_move:
+            if id_player != computer_player:
                 input_num = computers_move()
             else:
                 input_num = player_move()
 
-        num -= input_num
-        print(f'Осталось конфет {num}')
-        count_move += 1
+        candy_players[id_player] += int(input_num)
+        num += candy_players[id_player]
+        print(f'Взято конфет {num}')
 
-    get_win(count_move)
+        id_player = 1 if id_player == 2 else 2
+
+    print(f"Победу одержал {PLAYERS_NAMES[1 if id_player == 2 else 2]}")
 
 
 mode_num = int(input('Выберите режим (1 - с компьютером, 2 - с человеком): '))

@@ -1,24 +1,22 @@
 # 37) Напишите программу, удаляющую из текста все слова, содержащие "abc".
 
-def new_string(text):
-    res = ''
 
-    lst = text.split(' ')
+import codecs
 
-    for i in lst:
-        if 'abc' not in i:
-            res += i + ' '
+def rm_pattern(usr_data: str, pattern: str) -> str:
 
-    return res
+    return ' '.join([word for word in usr_data.split() if not pattern in word])
+
+PATTERN = 'абв'
 
 path = 'task037_DeleteWords/input_file.txt'
-f = open(path, 'r')
-text = f.read()
+f = codecs.open(path, 'r', encoding='utf-8')
+my_text = f.read()
 f.close()
 
-res = new_string(text)
+res = rm_pattern(my_text, PATTERN)
 print(res)
 
-with open('task037_DeleteWords/res.txt', 'w') as data:
-    data.write(f'{res} \n')
+with codecs.open('task037_DeleteWords/res.txt', 'w', 'utf-16') as data:
+    data.write(res + '\n')
 f.close()

@@ -20,7 +20,7 @@ def show_field(nums):
         print(' ')
 
 
-def get_win(nums):
+def check_win(nums):
     if (nums[1] == nums[2] == nums[3]) or \
         (nums[4] == nums[5] == nums[6]) or \
         (nums[7] == nums[8] == nums[9]) or \
@@ -34,87 +34,70 @@ def get_win(nums):
         return False
 
 
+def check_draw(nums, count_move):
+    if count_move == 9 and check_win(nums) == False:
+        return True
+    else:
+        return False
+
+
 def check_input(nums, num):
-    if num < 1 or num > 9 or (nums[num] == X) or (nums[num] == O):
+    if num < 1 or num > 9 or nums[num] == X or nums[num] == O:
         return False
     else:
         return True
 
 
-def computer_move(nums):
-    num = randint(1, 9)
-    check_input(nums, num)
-    while check_input(nums, num) == False:
-        num = randint(1, 9)
-        check_input(nums, num)
+def computer_move():
+    return randint(1, 9)
+
+
+def player_move(move):
+    return int(input(f'Введите незанятое число от 1 до 9 за {move}: '))
+
+
+def get_num(id_player, computers_move):
+    if id_player == computers_move:
+        num = computer_move()
+    else:
+        num = player_move(id_player)
 
     return num
 
 
-def player_move(nums, move):
-    num = int(input(f'Введите незанятое число от 1 до 9 за {move}: '))
-    check_input(nums, num)
-    while check_input(nums, num) == False:
-        num = int(input(f'Введите незанятое число от 1 до 9 за {move}: '))
-        check_input(nums, num)
+def do_move(nums, num, id_player, count_move):
+    nums[num] = id_player
 
-    return num
+    if check_win(nums) == True:
+        print(f'Выиграл {id_player}')
+        id_player = 'no'
+    elif check_draw(nums, count_move) == True:
+        print("Ничья")
+        id_player = 'no'
+    else:
+        id_player = X if id_player == O else O
 
-
-def do_move(move, num):
-    if move == X:
-        nums[num] = X
-        if get_win(nums) == True:
-            print(f'Выиграли {move}')
-            move = 'finish'
-        else:
-            move = O
-    elif move == O:
-        nums[num] = O
-        if get_win(nums) == True:
-            print(f'Выиграли {move}')
-            move = 'finish'
-        else:
-            move = X
-
-    return move
+    return id_player
 
 
-def play_game(nums, mode, players_move='no'):
-    num = 0
-    move = X
+def play_game(nums, computer_move):
+    id_player = X
     count_move = 0
-    get_win(nums)
+    check_win(nums)
 
-    while get_win(nums) == False or count_move == 9:
-        if mode == 'person':
-            num = 0
-            num = player_move(nums, move)
-            move = do_move(move, num)
+    while check_win(nums) == False or check_draw(nums, count_move) == False:
+        num = get_num(id_player, computer_move)
+        if check_input(nums, num) == True:
             count_move += 1
-            if move == 'finish' and count_move <= 9:
-                break
-            elif move != 'finish' and count_move == 9:
-                print('Ничья')
-                break
-        elif mode == 'computer':
-            if move != players_move and move != 'finish' and count_move != 9:
-                num = 0
-                num = computer_move(nums)
-                move = do_move(move, num)
-                count_move += 1
+            if do_move(nums, num, id_player, count_move) != 'no':
+                id_player = do_move(nums, num, id_player, count_move)
                 show_field(nums)
-            elif move == players_move and move != 'finish' and count_move != 9:
-                num = 0
-                num = player_move(nums, move)
-                move = do_move(move, num)
-                count_move += 1
+            else:
                 show_field(nums)
-            elif move == 'finish' and count_move <= 9:
                 break
-            elif move != 'finish' and count_move == 9:
-                print('Ничья')
-                break
+        else:
+            num = get_num(id_player, computer_move)
+            continue
 
 
 nums = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9}
@@ -132,8 +115,8 @@ if mode_num == 1:
     move_choose = input(
         'Выберите за кого будете играть (x или 0), x ходят первыми: ')
     if move_choose == 'x':
-        move = X
-    elif move_choose == '0':
         move = O
+    elif move_choose == '0':
+        move = X
 
-play_game(nums, mode, move)
+play_game(nums, move)

@@ -33,11 +33,10 @@ def get_recover(text):
     return res_str
 
 
-print(data)
 res1 = get_compression()
-print(res1)
 res2 = get_recover(res1)
-print(res2)
+
 with open('task040_GetRleAlgorithm/res.txt', 'w') as data:
     data.write(f'{res1} \n')
     data.write(res2 + '\n')
+data.close()

@@ -8,21 +8,12 @@ with open('file.txt', 'w') as data:
 
 data = open('file.txt', 'r')
 
-#def mult_nums(my_list):
-    #for line in data:
-     #   print(line)
-
 
 for line in data:
     print(line)
-
-#count = int(input('Число чисел: '))
-#max = int(input('Число max: '))
 count = 5
-max = 10
+max_num = 10
 
-my_list = func.get_random(count, max)
+my_list = func.get_random(count, max_num)
 print(my_list)
 print(" ")
-#mult_nums(my_list)
-#print(result)

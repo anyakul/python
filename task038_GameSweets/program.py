@@ -31,10 +31,12 @@ def computers_move():
 
 
 def player_move():
-    num = int(input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
+    num = int(
+        input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
     check_input(num)
     while check_input(num) == False:
-        num = int(input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
+        num = int(
+            input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
         check_input(num)
 
     return num
@@ -51,9 +53,8 @@ def get_first_move_player():
     return randint(1, CNT_PLAYERS)
 
 
-def play_game(mode, computer_move='no'):
+def play_game(mode):
     num = 0
-    count_move = 0
 
     candy_players: dict = {
         1: 0,

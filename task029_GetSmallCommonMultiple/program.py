@@ -38,6 +38,12 @@ def get_common_multiple(lst1, lst2):
     return res
 
 
+def get_common_multiple_new(lst1, lst2):
+    res = list(filter(lambda x: x in lst1 and x in lst2, lst1))
+
+    return res
+
+
 num1 = int(input('Число 1: '))
 num2 = int(input('Число 2: '))
 
@@ -45,7 +51,13 @@ lst1 = get_multiples(num1)
 lst2 = get_multiples(num2)
 
 common_lst = get_common_multiple(lst1, lst2)
+common_lst_new = get_common_multiple_new(lst1, lst2)
+
+print(common_lst_new)
 
 res = min(common_lst)
+res_new = min(common_lst_new)
 
 print(f"Наименьший общий знаменатель чисел {num1} и {num2} = {res}")
+
+print(f"Наименьший общий знаменатель чисел {num1} и {num2} = {res_new}")

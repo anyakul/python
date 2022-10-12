@@ -12,8 +12,14 @@ def get_random(min, max, count):
     return my_list
 
 
+def get_random_new(min, max, count):
+    return [randint(min, max) for i in range(0, count)]
+
+
 count = int(input('Количество чисел: '))
 min = int(input('min: '))
 max = int(input('max: '))
 my_list = get_random(min, max, count)
+my_list_new = get_random_new(min, max, count)
 print(my_list)
+print(my_list_new)

@@ -31,10 +31,12 @@ def computers_move():
 
 
 def player_move():
-    num = int(input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
+    num = int(
+        input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
     check_input(num)
     while check_input(num) == False:
-        num = int(input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
+        num = int(
+            input(f'Вы можете взять от {MIN_CANDY_STEP} до {MAX_CANDY_STEP} конфет: '))
         check_input(num)
 
     return num

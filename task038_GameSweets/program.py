@@ -51,9 +51,8 @@ def get_first_move_player():
     return randint(1, CNT_PLAYERS)
 
 
-def play_game(mode, computer_move='no'):
+def play_game(mode):
     num = 0
-    count_move = 0
 
     candy_players: dict = {
         1: 0,

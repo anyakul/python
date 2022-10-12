@@ -12,8 +12,8 @@ data = open('file.txt', 'r')
 for line in data:
     print(line)
 count = 5
-max = 10
+max_num = 10
 
-my_list = func.get_random(count, max)
+my_list = func.get_random(count, max_num)
 print(my_list)
 print(" ")

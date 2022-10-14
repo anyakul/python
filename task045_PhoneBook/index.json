@@ -1,0 +1,14 @@
+[
+    {
+        "description": "Описание1",
+        "first_name": "Имя1",
+        "phone_number": "Номер телефона1",
+        "second_name": "Фамилия1"
+    },
+    {
+        "description": "Описание2",
+        "first_name": "Имя2",
+        "phone_number": "Номер телефона2",
+        "second_name": "Фамилия2"
+    }
+]

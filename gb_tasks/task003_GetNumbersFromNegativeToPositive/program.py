@@ -8,8 +8,9 @@ def get_numbers(n):
     while i <= n:
         list.append(str(i))
         i += 1
-    
+
     return list
+
 
 num = int(input('Число: '))
 list = get_numbers(num)

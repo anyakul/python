@@ -15,6 +15,7 @@ def get_quarter_coordinate(x, y):
     else:
         print("На оси")
 
+
 x = int(input(f"4x: "))
 y = int(input(f"y: "))
 get_quarter_coordinate(x, y)

@@ -10,6 +10,7 @@ def input_numbers(x):
 
     return a
 
+
 def get_maximum_number(list):
     max = list[0]
 
@@ -19,6 +20,7 @@ def get_maximum_number(list):
 
     return max
 
+
 count = int(input('Введите количество чисел в списке: '))
 list = input_numbers(count)
 
@@ -26,4 +28,4 @@ max = get_maximum_number(list)
 
 print(list)
 
-print(f'Максимальное число - {max}');
+print(f'Максимальное число - {max}')

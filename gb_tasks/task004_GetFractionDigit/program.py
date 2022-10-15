@@ -6,6 +6,7 @@
 def get_fraction_digit(x):
     return x * 10 % 10
 
+
 a = float(input('Число: '))
 res = get_fraction_digit(a)
 print(f"Первая цифра дробной части числа {a} - {int(res)}")

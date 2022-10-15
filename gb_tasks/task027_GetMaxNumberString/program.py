@@ -5,4 +5,4 @@ lst = [int(i) for i in input('Введите числа через пробел:
 max_num = max(lst)
 min_num = min(lst)
 
-print(f"Минимальное число - {min_num}, максимальное - {max_num}")
+print(f"Минимальное число - {min_num}. Максимальное - {max_num}")

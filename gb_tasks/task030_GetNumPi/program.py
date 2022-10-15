@@ -11,6 +11,7 @@ def calc_factor(num):
     while num % 1 > 0:
         num *= 10
         result += 1
+
     return result
 
 

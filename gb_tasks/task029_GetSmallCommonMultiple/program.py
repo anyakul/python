@@ -59,5 +59,4 @@ res = min(common_lst)
 res_new = min(common_lst_new)
 
 print(f"Наименьший общий знаменатель чисел {num1} и {num2} = {res}")
-
 print(f"Наименьший общий знаменатель чисел {num1} и {num2} = {res_new}")

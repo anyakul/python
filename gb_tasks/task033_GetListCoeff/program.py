@@ -14,13 +14,13 @@ def get_random():
 
 
 def create_lst(k):
-    lst = [get_random() for i in range(k+1)]
-    return lst
+    return [get_random() for i in range(k+1)]
 
 
 def create_str(sp):
     lst = sp[::-1]
     res_str = ''
+
     if len(lst) < 1:
         res_str = 'x = 0'
     else:

@@ -3,5 +3,5 @@
 
 lst = [int(i) for i in input('Введите числа через пробел: ').split(" ")]
 
-res = set(lst)
-print(res)
+result = set(lst)
+print(result)

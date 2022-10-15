@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 
-file = 'task043_ModulesCollectSensorsData/data.cvs'
+file = 'gb_tasks/task041_ModulesCollectSensorsData/data.cvs'
 
 def temperature_logger(data):
     time = dt.now().strftime('%H:%M')

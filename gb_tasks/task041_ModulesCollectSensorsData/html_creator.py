@@ -13,7 +13,7 @@ def create(device = 1):
         .format(style, pressure_view(device))
     html += '</body>\n</html>'
 
-    with open('task043_ModulesCollectSensorsData/index.html', 'w') as page:
+    with open('gb_tasks/task041_ModulesCollectSensorsData/index.html', 'w') as page:
         page.write(html)
     
     return html
@@ -30,7 +30,7 @@ def new_create(data, device = 1):
         .format(style, p)
     html += '</body>\n</html>'
 
-    with open('task043_ModulesCollectSensorsData/new_index.html', 'w') as page:
+    with open('gb_tasks/task041_ModulesCollectSensorsData/new_index.html', 'w') as page:
         page.write(html)
     
     return data

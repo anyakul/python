@@ -16,4 +16,4 @@ def get_num_binary(num):
 
 num = int(input('Число: '))
 res = int(str(get_num_binary(num))[::-1])
-print(f"число {num} в двоичной системе = {res}")
+print(f"Число {num} в двоичной системе = {res}")

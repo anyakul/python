@@ -26,6 +26,7 @@ min_num = int(input('min: '))
 max_num = int(input('max: '))
 lst = func.get_random(min_num, max_num, count)
 print(lst)
+
 res = get_multi(lst)
 print()
 print(res)

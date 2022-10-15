@@ -22,6 +22,7 @@ def get_negafib(num):
 
 def get_fib(my_list):
     res = []
+
     for el in my_list:
         if el != 0:
             res.append(abs(el))

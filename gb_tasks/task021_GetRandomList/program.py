@@ -4,12 +4,12 @@ from random import randint
 
 
 def get_random(min_num, max_num, count):
-    my_list = []
+    lst = []
 
     for i in range(0, count):
-        my_list.append(randint(min_num, max_num))
+        lst.append(randint(min_num, max_num))
 
-    return my_list
+    return lst
 
 
 def get_random_new(min_num, max_num, count):

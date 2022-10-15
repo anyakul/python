@@ -12,7 +12,7 @@ def create(device = 1):
         .format(pressure_view(device))
     xml += '</xml>'
 
-    with open('examples/example034_ModulesCollectSensorsData/data.xml', 'w') as page:
+    with open('task043_ModulesCollectSensorsData/data.xml', 'w') as page:
         page.write(xml)
     
     return xml

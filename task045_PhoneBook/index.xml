@@ -1,0 +1,12 @@
+<xml>
+<first_name>Имя: Имя1</first_name>
+<second_name>Фамилия: Фамилия1</second_name>
+<phone_number>Номер телефона: Номер телефона1</phone_number>
+<description>Описание: Описание1</description>
+ 
+<first_name>Имя: Имя2</first_name>
+<second_name>Фамилия: Фамилия2</second_name>
+<phone_number>Номер телефона: Номер телефона2</phone_number>
+<description>Описание: Описание2</description>
+ 
+</xml>

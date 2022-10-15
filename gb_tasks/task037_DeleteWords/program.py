@@ -9,7 +9,7 @@ def rm_pattern(usr_data: str, pattern: str) -> str:
 
 PATTERN = 'абв'
 
-path = 'task037_DeleteWords/input_file.txt'
+path = 'gb_tasks/task037_DeleteWords/input_file.txt'
 f = codecs.open(path, 'r', encoding='utf-8')
 my_text = f.read()
 f.close()
@@ -17,6 +17,6 @@ f.close()
 res = rm_pattern(my_text, PATTERN)
 print(res)
 
-with codecs.open('task037_DeleteWords/res.txt', 'w', 'utf-16') as data:
+with codecs.open('gb_tasks/task037_DeleteWords/res.txt', 'w', 'utf-16') as data:
     data.write(res + '\n')
 f.close()

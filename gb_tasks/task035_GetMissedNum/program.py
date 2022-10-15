@@ -18,7 +18,7 @@ def get_num(lst):
             return lst[i] + 1
 
 
-path = 'task035_GetMissedNum/file.txt'
+path = 'gb_tasks/task035_GetMissedNum/file.txt'
 f = open(path, 'r')
 data = f.read() + ' '
 f.close()

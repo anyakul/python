@@ -39,8 +39,8 @@ def get_sum(poly1, poly2):
 #res = get_sum(koef1, koef2)
 
 
-str1 = read_file('task034_GetSumPolynomials/file1.txt')
-str2 = read_file('task034_GetSumPolynomials/file2.txt')
+str1 = read_file('gb_tasks/task034_GetSumPolynomials/file1.txt')
+str2 = read_file('gb_tasks/task034_GetSumPolynomials/file2.txt')
 
 lst1 = get_nums(str1)
 lst2 = get_nums(str2)

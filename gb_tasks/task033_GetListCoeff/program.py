@@ -5,7 +5,7 @@ import random
 
 
 def write_file(st):
-    with open('task033_GetListCoeff/file.txt', 'w') as data:
+    with open('gb_tasks/task033_GetListCoeff/file.txt', 'w') as data:
         data.write(st)
 
 

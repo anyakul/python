@@ -4,8 +4,8 @@
 def get_list(n):
     result = []
     for el in range(1, n + 1):
-        res = round(((1 + 1/el) ** el), 2)
-        result.append(str(res))
+        num = round(((1 + 1/el) ** el), 2)
+        result.append(str(num))
 
     return result
 

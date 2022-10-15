@@ -9,6 +9,7 @@ def check_float(num):
     else:
         return int(num)
 
+
 def get_sum_digits(number):
     sum_num = 0
 
@@ -19,6 +20,7 @@ def get_sum_digits(number):
         num = num // 10
 
     return sum_num
+
 
 number = input('Число n: ')
 result = get_sum_digits(number)

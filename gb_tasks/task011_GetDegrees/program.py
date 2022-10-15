@@ -11,9 +11,9 @@ def get_degree(number):
 
 def get_degree_new(number):
     li = [x for x in range(0, number + 1)]
-    res = list(map(lambda x: (-3)**x, li))
+    result = list(map(lambda x: (-3)**x, li))
 
-    return res
+    return result
 
 
 number = int(input('Число n: '))

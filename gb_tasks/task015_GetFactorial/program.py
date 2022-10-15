@@ -11,6 +11,7 @@ def get_factorial(number):
 
     return result
 
+
 number = int(input('Число n: '))
 result = get_factorial(number)
 print(", ".join(result), end=".")

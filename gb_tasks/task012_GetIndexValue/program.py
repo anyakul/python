@@ -8,6 +8,7 @@ def get_index_value(number):
 
     return result
 
+
 number = int(input('Число n: '))
 result = get_index_value(number)
 print(result)

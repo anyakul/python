@@ -8,10 +8,10 @@ from random import randint
 
 MODE_1 = 'computer'
 MODE_2 = 'person'
-CNT_CANDY = 100
+CNT_CANDY = 2021
 CNT_PLAYERS = 2
-MAX_CANDY_STEP = 28
 MIN_CANDY_STEP = 0
+MAX_CANDY_STEP = 28
 
 PLAYERS_NAMES = {
     1: 'Player_1',

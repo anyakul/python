@@ -26,5 +26,5 @@ f.close()
 nums = get_nums(data)
 print(nums)
 
-res = get_num(nums)
-print(f"Недостающее число - {res}")
+result = get_num(nums)
+print(f"Недостающее число - {result}")

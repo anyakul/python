@@ -14,5 +14,5 @@ def get_single_nums(lst):
 
 lst = [int(i) for i in input('Введите числа через пробел: ').split(" ")]
 
-res = get_single_nums(lst)
-print(res)
+result = get_single_nums(lst)
+print(result)

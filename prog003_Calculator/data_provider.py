@@ -1,4 +1,2 @@
 def get_nums():
-    num = int(input('Введите число: '))
-
-    return num
+    return int(input('Введите число: '))

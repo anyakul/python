@@ -6,5 +6,6 @@ def check_divisible(x):
     else:
         print(f"Нет, при числе {a} условие не выполняется")
 
+
 a = int(input('Число: '))
 check_divisible(a)

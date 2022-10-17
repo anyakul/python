@@ -5,6 +5,7 @@ from random import randint
 
 def get_random(count, min, max):
     result = []
+
     for el in range(0, count + 1):
         result.append(str(randint(min, max)))
 
@@ -13,6 +14,7 @@ def get_random(count, min, max):
 
 def mix_list(my_list):
     result = my_list[:]
+
     for i in range(count + 1):
         index = randint(0, len(my_list) - 1)
         temp = result[i]

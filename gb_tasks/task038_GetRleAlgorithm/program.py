@@ -39,4 +39,3 @@ res2 = get_recover(res1)
 with open('gb_tasks/task040_GetRleAlgorithm/res.txt', 'w') as data:
     data.write(f'{res1} \n')
     data.write(res2 + '\n')
-data.close()

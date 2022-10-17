@@ -17,5 +17,5 @@ def get_growing_nums(lst):
 
 lst = [int(i) for i in input('Введите числа через пробел: ').split(" ")]
 
-res = get_growing_nums(lst)
-print(res)
+result = get_growing_nums(lst)
+print(result)

@@ -5,9 +5,10 @@ trigger = True
 for x in [True, False]:
     for y in [True, False]:
         for z in [True, False]:
-            if not(x or y or z) != (not x and not y and not z):
+            if not (x or y or z) != (not x and not y and not z):
                 print('Не верно')
                 trigger = False
                 break
 
-if trigger: print("Выражение верно")
+if trigger:
+    print("Выражение верно")

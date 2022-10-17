@@ -28,13 +28,16 @@ def polska(ex):
             while stack_list and stack_list[-1] in ['+', '-', '*', '/']:
                 result.append(stack_list.pop())
             stack_list.append(el)
+
     while stack_list:
         result.append(stack_list.pop())
+
     return (result)
 
 
 def get_res(ex):
     temp = []
+
     for i in ex:
         if i.isdigit():
             temp.append(int(i))
@@ -49,6 +52,7 @@ def get_res(ex):
                 temp.append(a*b)
             elif i == '/':
                 temp.append(a/b)
+
     return temp
 
 

@@ -31,6 +31,7 @@ def get_index_string(my_list, str):
 
     return index
 
+
 print(" ")
 
 

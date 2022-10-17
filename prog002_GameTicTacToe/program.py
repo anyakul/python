@@ -87,6 +87,7 @@ def play_game(nums, computer_move):
 
     while check_win(nums) == False or check_draw(nums, count_move) == False:
         num = get_num(id_player, computer_move)
+
         if check_input(nums, num) == True:
             count_move += 1
             if do_move(nums, num, id_player, count_move) != 'no':

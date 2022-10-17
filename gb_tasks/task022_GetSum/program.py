@@ -18,5 +18,6 @@ min_num = int(input('min: '))
 max_num = int(input('max: '))
 lst = func.get_random(min_num, max_num, count)
 print(lst)
+
 res = get_sum(lst)
 print(f"Сумма чисел на нечётных позициях = {res}")

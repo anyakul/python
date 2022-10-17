@@ -15,5 +15,5 @@ def get_multipliers(num):
 
 
 num = int(input('Число: '))
-res = get_multipliers(num)
-print(res)
+result = get_multipliers(num)
+print(result)

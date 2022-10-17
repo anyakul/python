@@ -12,6 +12,7 @@ def get_discriminant(a, b, c):
 
 def get_roots(a, b, c):
     d = get_discriminant(a, b, c)
+
     if d < 0:
         print("Корней нет")
     elif d == 0:

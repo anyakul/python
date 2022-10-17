@@ -11,5 +11,6 @@ def check_weekend(x):
     else:
         print(f"Дня недели {a} нет")
 
+
 a = int(input('Введите номер дня недели: '))
 check_weekend(a)

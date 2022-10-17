@@ -11,6 +11,7 @@ data = open('file.txt', 'r')
 
 for line in data:
     print(line)
+
 count = 5
 max_num = 10
 

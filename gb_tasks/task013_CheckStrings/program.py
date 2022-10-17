@@ -2,6 +2,7 @@
 
 def check_strings(string, substring):
     counter = 0
+
     for i in range(len(string) - len(substring) + 1):
         if string[i] == substring[0]:
             counterIn = 0

@@ -31,6 +31,7 @@ def get_nums(data):
 def get_sum(poly1, poly2):
     lst = zip(poly1, poly2)
     res = []
+
     for el in lst:
         res.append(sum(list(el)))
 

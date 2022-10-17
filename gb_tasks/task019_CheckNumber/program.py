@@ -4,13 +4,13 @@ import func
 
 
 def check_num(my_list, num):
-    res = False
+    result = False
 
     for i in range(0, len(my_list)):
         if my_list[i] == num:
-            res = True
+            result = True
 
-    return res
+    return result
 
 
 count = int(input('Количество строк: '))

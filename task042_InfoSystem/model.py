@@ -1,6 +1,3 @@
-import json_model as jm
-
-
 def search_user_data(data):
     index = -1
     search_string = input('Что ищете: ')
@@ -66,7 +63,3 @@ def delete_user_data(data):
         print('Запись была удалена')
     else:
         print('Запись не удалена')
-
-
-def save_data_in_file(data):
-    jm.write_file(data)

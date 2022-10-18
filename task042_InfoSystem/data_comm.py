@@ -1,11 +1,11 @@
 import model
 import menu
-import json_model
+import json_model as jm
 
 
-def data_com():
+def data_comm():
     exit = True
-    data = json_model.read_file()
+    data = jm.read_file()
     what = menu.get_menu_point()
 
     while exit == True:
@@ -24,7 +24,7 @@ def data_com():
         elif what == 7:
             model.delete_user_data(data)
         elif what == 8:
-            model.save_data_in_file(data)
+            jm.write_file(data)
             exit = False
             break
         what = menu.get_menu_point()

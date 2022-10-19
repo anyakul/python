@@ -1,0 +1,12 @@
+[
+    {
+        "first_name": "Имя1",
+        "id": 1,
+        "second_name": "Фамилия1"
+    },
+    {
+        "first_name": "Имя2",
+        "id": 2,
+        "second_name": "Фамилия2"
+    }
+]

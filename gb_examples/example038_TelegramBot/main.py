@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler
 from bot_commands import *
 
-data = open('gb_examples/example038_TelegramBot/token.txt', 'r')
+data = open('confident/token.txt', 'r')
 text = data.read()
 updater = Updater(text)
 

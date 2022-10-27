@@ -1,13 +1,23 @@
+def show_user_data(data):
+    print('----------------------')
+    for el in data:
+        for key, value in el.items():
+            print("{0}: {1}".format(key, value))
+        print('----------------------')
+
+
 def search_user_data(data):
     index = -1
     search_string = input('Что ищете: ')
     cur_ind = 0
+    searched_lst = []
 
     for i in range(len(data)):
         for val in data[i].values():
             if val == search_string:
                 index = cur_ind
-                print(data[index])
+                searched_lst.append(data[i])
+                show_user_data(searched_lst)
                 break
         cur_ind += 1
     if index == -1:

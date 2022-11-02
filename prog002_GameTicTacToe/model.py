@@ -1,6 +1,10 @@
 # 39) Создайте программу для игры в "Крестики-нолики".
 
-
+from telegram import Update
+from telegram.ext import CallbackContext
+import datetime
+from model import *
+from spy_log import *
 from random import randint
 
 
@@ -11,13 +15,7 @@ MODE_2 = 'person'
 
 
 def show_field(nums):
-    cell = 1
-
-    for i in range(0, 3):
-        for j in range(0, 3):
-            print(nums[cell], end=' ')
-            cell += 1
-        print(' ')
+    print(' '.join('{}'.format(val) for key, val in nums.items()))
 
 
 def check_win(nums):
@@ -101,6 +99,6 @@ def play_game(nums, computer_move):
             continue
 
 
-nums = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9}
+nums = {1: 1, 2: 2, 3: 3, '\n': '\n', 4: 4, 5: 5, 6: 6, '\n': '\n', 7: 7, 8: 8, 9: 9}
 
 show_field(nums)

@@ -4,7 +4,6 @@ from telegram import Update
 from telegram.ext import CallbackContext
 #from telebot import Bot
 import telebot
-import time
 
 MODE_1 = 'computer'
 MODE_2 = 'person'
@@ -43,6 +42,10 @@ def get_number(user_id, key):
     return storage[user_id][key].get('value')
 
 
+def sum(num, start_sum):
+    start_sum + num
+
+
 def computer_move():
     return randint(MIN_CANDY_STEP, MAX_CANDY_STEP)
 
@@ -66,13 +69,40 @@ def player_move():
     return num
 
 
+def calc():
+    num = message.text.split()
+    number = int(num)
+    bot.send_message(message.chat.id, f'{number}')
 
 
+def sum(num):
+    return num
 
-#bot.skip_pending = True
-bot.polling(none_stop=True)
+
+@bot.message_handler(content_types=['text'])
+def play_func(message):
+    input_num = 0
+    num = 0
+    id_player = 2
+    id_computer_player = 2
+
+    while num < CNT_CANDY:
+        if id_player == id_computer_player:
+            input_num = computer_move()
+            id_player = 1 if id_player == 2 else 2
+            print(f"комп - {input_num}")
+        elif id_player != id_computer_player:
+            if message.text == '/play':
+                return
+            msg = bot.send_message(message.from_user.id, text=f"{message.text}")
+            bot.register_next_step_handler(msg, play_func)
+            input_num = int(msg.text)
+            print(f"мы - {input_num}")
+            id_player = 1 if id_player == 2 else 2
+        num += input_num
+        bot.send_message(message.from_user.id, text=f'Взято конфет: {num}')
+
+    bot.send_message(message.from_user.id, text=f"Победу одержал {PLAYERS_NAMES[1 if id_player == 2 else 2]}")
 
 
-def start_2(message):
-    return message.text
-
+bot.polling(none_stop=True, interval=0)

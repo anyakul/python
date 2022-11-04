@@ -56,6 +56,8 @@ def play_func(message):
             id_player = 1 if id_player == 2 else 2
             print(f"комп - {input_num}")
         elif id_player != id_computer_player:
+            bot.send_message(
+                message.from_user.id, text=f'Вы можете взять от {MIN_CANDY_STEP} до {max_step} конфет: ')
             if message.text == '/play':
                 return
             msg = bot.send_message(message.from_user.id,

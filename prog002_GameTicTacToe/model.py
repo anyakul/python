@@ -19,11 +19,18 @@ token = data.read()
 bot = telebot.TeleBot(token)
 
 nums = {1: 1, 2: 2, 3: 3, '\n': '\n', 4: 4,
-        5: 5, 6: 6, '\n': '\n', 7: 7, 8: 8, 9: 9}
+        5: 5, 6: 6, '\nn': '\n', 7: 7, 8: 8, 9: 9}
 
 
-def show_field(nums):
-    bot.reply_to(' '.join('{}'.format(val) for val in nums.items()))
+def show_field(nums, message):
+    bot.send_message(message.from_user.id, text=' '.join(
+        '{}'.format(val) for key, val in nums.items()))
+
+
+def reset_nums(nums):
+    for key, val in nums.items():
+        if key != '\nn':
+            nums[key] = key
 
 
 def check_win(nums):
@@ -66,19 +73,20 @@ def get_num(id_player, computers_move):
     if id_player == computers_move:
         num = computer_move()
     else:
-        num = player_move(id_player)
+        num = computer_move()
 
     return num
 
 
-def do_move(nums, num, id_player, count_move):
+def do_move(nums, num, id_player, count_move, message):
     nums[num] = id_player
 
     if check_win(nums) == True:
-        print(f'Выиграл {id_player}')
+        bot.send_message(
+            message.from_user.id, text=f'Выиграл {id_player}. Наберите /play чтобы играть снова')
         id_player = 'no'
     elif check_draw(nums, count_move) == True:
-        print("Ничья")
+        bot.send_message(message.from_user.id, text="Ничья")
         id_player = 'no'
     else:
         id_player = X if id_player == O else O
@@ -86,11 +94,13 @@ def do_move(nums, num, id_player, count_move):
     return id_player
 
 
-def play_func():
+@bot.message_handler(content_types=['text'])
+def play_func(message):
+    reset_nums(nums)
     id_player = X
     computer_move = X
     count_move = 0
-    show_field(nums)
+    show_field(nums, message)
     check_win(nums)
 
     while check_win(nums) == False or check_draw(nums, count_move) == False:
@@ -98,12 +108,15 @@ def play_func():
 
         if check_input(nums, num) == True:
             count_move += 1
-            if do_move(nums, num, id_player, count_move) != 'no':
-                id_player = do_move(nums, num, id_player, count_move)
-                show_field(nums)
+            if do_move(nums, num, id_player, count_move, message) != 'no':
+                id_player = do_move(nums, num, id_player, count_move, message)
+                show_field(nums, message)
             else:
-                show_field(nums)
+                show_field(nums, message)
                 break
         else:
             num = get_num(id_player, computer_move)
             continue
+
+
+bot.polling(none_stop=True, interval=0)

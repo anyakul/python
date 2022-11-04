@@ -8,6 +8,13 @@ def play_command(update: Update, context: CallbackContext):
     log(update, context)
     update.message.reply_text(f'Игра крестики нолики')
     update.message.reply_text(f'Начало игры')
+    play_func()
+    update.message.reply_text(' '.join('{}'.format(val) for key, val in nums.items()))
+"""
+def play_command(update: Update, context: CallbackContext):
+    log(update, context)
+    update.message.reply_text(f'Игра крестики нолики')
+    update.message.reply_text(f'Начало игры')
     id_player = X
     count_move = 0
     check_win(nums)
@@ -26,3 +33,4 @@ def play_command(update: Update, context: CallbackContext):
         else:
             num = get_num(id_player, computer_move)
             continue
+"""

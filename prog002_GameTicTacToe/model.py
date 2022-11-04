@@ -6,6 +6,7 @@ import datetime
 from model import *
 from spy_log import *
 from random import randint
+import telebot
 
 
 X = 'X'
@@ -13,9 +14,16 @@ O = '0'
 MODE_1 = 'computer'
 MODE_2 = 'person'
 
+data = open('confident/token.txt', 'r')
+token = data.read()
+bot = telebot.TeleBot(token)
+
+nums = {1: 1, 2: 2, 3: 3, '\n': '\n', 4: 4,
+        5: 5, 6: 6, '\n': '\n', 7: 7, 8: 8, 9: 9}
+
 
 def show_field(nums):
-    print(' '.join('{}'.format(val) for key, val in nums.items()))
+    bot.reply_to(' '.join('{}'.format(val) for val in nums.items()))
 
 
 def check_win(nums):
@@ -78,9 +86,11 @@ def do_move(nums, num, id_player, count_move):
     return id_player
 
 
-def play_game(nums, computer_move):
+def play_func():
     id_player = X
+    computer_move = X
     count_move = 0
+    show_field(nums)
     check_win(nums)
 
     while check_win(nums) == False or check_draw(nums, count_move) == False:
@@ -97,8 +107,3 @@ def play_game(nums, computer_move):
         else:
             num = get_num(id_player, computer_move)
             continue
-
-
-nums = {1: 1, 2: 2, 3: 3, '\n': '\n', 4: 4, 5: 5, 6: 6, '\n': '\n', 7: 7, 8: 8, 9: 9}
-
-show_field(nums)

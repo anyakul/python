@@ -6,7 +6,6 @@ data = open('confident/token.txt', 'r')
 text = data.read()
 updater = Updater(text)
 
-num = 0
 updater.dispatcher.add_handler(CommandHandler('play', play_command))
 updater.start_polling()
 updater.idle()

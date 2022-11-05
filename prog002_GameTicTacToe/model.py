@@ -7,7 +7,7 @@ from model import *
 from spy_log import *
 from random import randint
 import telebot
-
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 X = 'X'
 O = '0'
@@ -18,8 +18,21 @@ data = open('confident/token.txt', 'r')
 token = data.read()
 bot = telebot.TeleBot(token)
 
-nums = {1: 1, 2: 2, 3: 3, '\n': '\n', 4: 4,
-        5: 5, 6: 6, '\nn': '\n', 7: 7, 8: 8, 9: 9}
+nums = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9}
+
+
+def build_menu(buttons, n_cols):
+    return [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
+
+
+def get_buttons_list(new_nums):
+    lst = list(new_nums.values())
+    buttons = []
+
+    for i in lst:
+        buttons.append(InlineKeyboardButton(str(i), callback_data=str(i)))
+
+    return InlineKeyboardMarkup(build_menu(buttons, n_cols=3))
 
 
 def show_field(nums, message):
@@ -47,22 +60,33 @@ def check_win(nums):
         return False
 
 
-def check_draw(nums, count_move):
-    if count_move == 9 and check_win(nums) == False:
+def check_draw(nums):
+    count = -1
+    for i in nums:
+        if nums[i] == X or nums[i] == 0:
+            count += 1
+    if count == 9 and check_win(nums) == False:
         return True
     else:
         return False
 
 
 def check_input(nums, num):
-    if num < 1 or num > 9 or nums[num] == X or nums[num] == O:
+    if nums[num] == X or nums[num] == O:
         return False
     else:
         return True
 
 
-def computer_move():
-    return randint(1, 9)
+def computer_move(nums):
+    num = randint(1, 9)
+    check_input(nums, num)
+
+    while check_input(nums, num) == False:
+        num = randint(1, 9)
+        check_input(nums, num)
+    
+    return num
 
 
 def player_move(move):
@@ -76,47 +100,3 @@ def get_num(id_player, computers_move):
         num = computer_move()
 
     return num
-
-
-def do_move(nums, num, id_player, count_move, message):
-    nums[num] = id_player
-
-    if check_win(nums) == True:
-        bot.send_message(
-            message.from_user.id, text=f'Выиграл {id_player}. Наберите /play чтобы играть снова')
-        id_player = 'no'
-    elif check_draw(nums, count_move) == True:
-        bot.send_message(message.from_user.id, text="Ничья")
-        id_player = 'no'
-    else:
-        id_player = X if id_player == O else O
-
-    return id_player
-
-
-@bot.message_handler(content_types=['text'])
-def play_func(message):
-    reset_nums(nums)
-    id_player = X
-    computer_move = X
-    count_move = 0
-    show_field(nums, message)
-    check_win(nums)
-
-    while check_win(nums) == False or check_draw(nums, count_move) == False:
-        num = get_num(id_player, computer_move)
-
-        if check_input(nums, num) == True:
-            count_move += 1
-            if do_move(nums, num, id_player, count_move, message) != 'no':
-                id_player = do_move(nums, num, id_player, count_move, message)
-                show_field(nums, message)
-            else:
-                show_field(nums, message)
-                break
-        else:
-            num = get_num(id_player, computer_move)
-            continue
-
-
-bot.polling(none_stop=True, interval=0)

@@ -3,7 +3,7 @@ from random import randint
 
 MODE_1 = 'computer'
 MODE_2 = 'person'
-CNT_CANDY = 100
+CNT_CANDY = 101
 CNT_PLAYERS = 2
 MIN_CANDY_STEP = 1
 MAX_CANDY_STEP = 28

@@ -35,15 +35,9 @@ def get_buttons_list(new_nums):
     return InlineKeyboardMarkup(build_menu(buttons, n_cols=3))
 
 
-def show_field(nums, message):
-    bot.send_message(message.from_user.id, text=' '.join(
-        '{}'.format(val) for key, val in nums.items()))
-
-
 def reset_nums(nums):
     for key, val in nums.items():
-        if key != '\nn':
-            nums[key] = key
+        nums[key] = key
 
 
 def check_win(nums):
@@ -61,7 +55,7 @@ def check_win(nums):
 
 
 def check_draw(nums):
-    count = -1
+    count = 0
     for i in nums:
         if nums[i] == X or nums[i] == 0:
             count += 1
@@ -72,7 +66,7 @@ def check_draw(nums):
 
 
 def check_input(nums, num):
-    if nums[num] == X or nums[num] == O:
+    if nums[num] == X or nums[num] == 0:
         return False
     else:
         return True

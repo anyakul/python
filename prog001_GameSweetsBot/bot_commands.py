@@ -21,6 +21,7 @@ def start_command(update: Update, context: CallbackContext):
     log(update, context)
     context.bot.send_message(chat_id=update.effective_chat.id, text=start_text)
 
+
 @bot.message_handler(content_types=['text'])
 def play_command(update: Update, context: CallbackContext):
     log(update, context)
@@ -36,19 +37,23 @@ def play_command(update: Update, context: CallbackContext):
             input_num = computer_move(max_step)
         elif id_player != id_computer_player:
             reply_markups = get_buttons_list(MIN_CANDY_STEP, max_step)
-            context.bot.send_message(chat_id=update.effective_chat.id, text="Выберите число: ", reply_markup=reply_markups)
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text="Выберите число: ", reply_markup=reply_markups)
             updater.dispatcher.add_handler(CallbackQueryHandler(button))
         num += input_num
-        context.bot.send_message(chat_id=update.effective_chat.id, text=f'Взято конфет: {num}')
+        context.bot.send_message(
+            chat_id=update.effective_chat.id, text=f'Взято конфет: {num}')
         id_player = 1 if id_player == 2 else 2
 
-    context.bot.send_message(chat_id=update.effective_chat.id, text=f"Победу одержал {PLAYERS_NAMES[1 if id_player == 2 else 2]}")
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=f"Победу одержал {PLAYERS_NAMES[1 if id_player == 2 else 2]}")
     updater.dispatcher.remove_handler(CallbackQueryHandler(button))
 
 
-
 def echo(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id, text='Неизвестная команда. Отправьте /play для начала игры')
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text='Неизвестная команда. Отправьте /play для начала игры')
+
 
 def button(update, _):
     query = update.callback_query

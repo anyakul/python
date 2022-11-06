@@ -34,7 +34,11 @@ def check_win(nums):
         return False
 
 
-def check_draw(nums, count_move):
+def check_draw(nums):
+    count_move = 0
+    for key, val in nums.items():
+        if val == 'x' or val == 'o':
+            count_move += 9
     if count_move == 9 and check_win(nums) == False:
         return True
     else:

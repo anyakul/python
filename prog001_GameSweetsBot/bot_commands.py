@@ -30,6 +30,7 @@ def play_command(update: Update, context: CallbackContext):
     num = 0
     id_player = 2
     id_computer_player = 2
+    updater.dispatcher.add_handler(CallbackQueryHandler(button))
 
     while num < CNT_CANDY:
         max_step = get_max_step(num)
@@ -39,7 +40,6 @@ def play_command(update: Update, context: CallbackContext):
             reply_markups = get_buttons_list(MIN_CANDY_STEP, max_step)
             context.bot.send_message(
                 chat_id=update.effective_chat.id, text="Выберите число: ", reply_markup=reply_markups)
-            updater.dispatcher.add_handler(CallbackQueryHandler(button))
         num += input_num
         context.bot.send_message(
             chat_id=update.effective_chat.id, text=f'Взято конфет: {num}')

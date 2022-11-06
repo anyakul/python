@@ -1,17 +1,22 @@
-from telegram import Update
-from telegram.ext import Updater, CommandHandler
+import logging
+from telegram.ext import filters, ApplicationBuilder, CommandHandler, MessageHandler
+from model import *
 from bot_commands import *
-from telegram.ext import CommandHandler, MessageHandler, Filters
-from bot_commands import *
 
-dispatcher = updater.dispatcher
-start_handler = CommandHandler('start', start_command)
-dispatcher.add_handler(start_handler)
-play_handler = CommandHandler('play', play_command)
-dispatcher.add_handler(play_handler)
 
-echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
-dispatcher.add_handler(echo_handler)
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
 
-updater.start_polling()
-updater.idle()
+if __name__ == '__main__':
+    application = ApplicationBuilder().token(token).build()
+    usr_handler = MessageHandler(
+        filters.TEXT & (~filters.COMMAND), usr_msg_hdr)
+
+    start_handler = CommandHandler('start', start)
+
+    application.add_handler(start_handler)
+    application.add_handler(usr_handler)
+
+    application.run_polling()

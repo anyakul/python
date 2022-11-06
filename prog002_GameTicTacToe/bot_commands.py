@@ -25,8 +25,7 @@ async def usr_msg_hdr(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if ms.lower() == LBL_X:
         nums[num] = 'x'
-        field = show_field(nums)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=field)
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=show_field(nums))
         if check_win(nums) == True:
             await context.bot.send_message(chat_id=update.effective_chat.id, text='Выиграл X. Наберите /start чтобы играть снова')
         if check_draw(nums) == True:

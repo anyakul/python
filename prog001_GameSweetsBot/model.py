@@ -1,4 +1,3 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from random import randint
 
 MODE_1 = 'computer'
@@ -13,8 +12,10 @@ PLAYERS_NAMES = {
     2: 'Player_2'
 }
 
+sum = 0
 
-def computer_move(max_step):
+
+def computers_move(max_step):
     return randint(MIN_CANDY_STEP, max_step)
 
 
@@ -25,16 +26,3 @@ def get_max_step(num):
         res = CNT_CANDY - num
 
     return res
-
-
-def build_menu(buttons, n_cols):
-    return [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
-
-
-def get_buttons_list(min_num, max_num):
-    lst = []
-
-    for i in range(min_num, max_num):
-        lst.append(InlineKeyboardButton(str(i), callback_data=str(i)))
-
-    return InlineKeyboardMarkup(build_menu(lst, n_cols=5))

@@ -1,22 +1,48 @@
-import logging
-from telegram.ext import filters, ApplicationBuilder, CommandHandler, MessageHandler
 from model import *
-from bot_commands import *
+import time
+import telebot
+
+player_move = get_first_move()
+
+data = open('confident/token.txt', 'r')
+text = data.read()
+bot = telebot.TeleBot(text)
 
 
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
-)
+@bot.message_handler(commands=['start'])
+def main(message):
+    global player_move
+    reset_nums(nums)
+    msg = bot.send_message(message.chat.id, "Добро пожаловать, {0.first_name}!\nЯ - <b>{1.first_name}</b>\nИгра крестики нолики началась!".format(
+        message.from_user, bot.get_me()), parse_mode='html')
+    id_player = X
+    computer_move = get_computer_move(player_move)
+    count_move = 0
+    move_time = 10
 
-if __name__ == '__main__':
-    application = ApplicationBuilder().token(token).build()
-    usr_handler = MessageHandler(
-        filters.TEXT & (~filters.COMMAND), usr_msg_hdr)
+    while check_win(nums) != True and check_draw(nums, count_move) != True:
+        if id_player == computer_move:
+            nums[computers_move(nums)] = computer_move
+        elif id_player != computer_move:
+            msg = bot.send_message(
+                message.chat.id, f"Введите незанятое число. Ход переключится через {move_time} секунд: ")
+            bot.register_next_step_handler(msg, move)
+            time.sleep(move_time)
+        count_move += 1
+        if check_win(nums) != True and check_draw(nums, count_move) != True:
+            bot.send_message(message.chat.id, show_field(nums))
+            id_player = X if id_player == O else O
+    if check_win(nums) == True or check_draw(nums, count_move) == True:
+        bot.send_message(message.chat.id, show_field(nums))
+        res_str = get_res_str(id_player, nums, count_move)
+        bot.send_message(message.chat.id, text=res_str)
 
-    start_handler = CommandHandler('start', start)
 
-    application.add_handler(start_handler)
-    application.add_handler(usr_handler)
+@bot.message_handler(content_types=['text'])
+def move(message):
+    global nums
+    global player_move
+    nums[int(message.text)] = player_move
 
-    application.run_polling()
+
+bot.polling(none_stop=True)

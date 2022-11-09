@@ -10,7 +10,7 @@ def data_comm():
 
     while exit == True:
         if what == 1:
-            print(data)
+            model.show_user_data(data)
         elif what == 2:
             model.search_user_data(data)
         elif what == 3:

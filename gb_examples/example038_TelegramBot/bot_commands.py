@@ -2,6 +2,7 @@ from telegram import Update
 from telegram.ext import CallbackContext
 import datetime
 from spy_log import *
+from random import randint
 
 
 def hi_command(update: Update, context: CallbackContext):
@@ -24,8 +25,8 @@ def sum_command(update: Update, context: CallbackContext):
     msg = update.message.text  # ~input
     print(msg)
     items = msg.split()  # /sum 123 534543
-    x = int(items[1])
-    y = int(items[2])
+    x = randint(1, 28)
+    y = randint(1, 28)
     update.message.reply_text(f'{x} + {y} = {x+y}')  # ~print
 
 

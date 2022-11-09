@@ -38,7 +38,7 @@ def check_win(nums):
 
 
 def check_draw(nums, count_move):
-    if count_move == 9 and check_win(nums) == False:
+    if count_move == 9 and not check_win(nums):
         return True
     else:
         return False
@@ -55,7 +55,7 @@ def computers_move(nums):
     num = randint(1, 9)
     check_input(nums, num)
 
-    while check_input(nums, num) == False:
+    while not check_input(nums, num):
         num = randint(1, 9)
         check_input(nums, num)
 
@@ -63,9 +63,9 @@ def computers_move(nums):
 
 
 def get_res_str(id_player, nums, count_move):
-    if check_win(nums) == True:
+    if check_win(nums):
         return f'Выиграл {id_player}. Наберите /start чтобы играть снова'
-    elif check_draw(nums, count_move) == True:
+    elif check_draw(nums, count_move):
         return 'Ничья. Наберите /start чтобы играть снова'
 
 

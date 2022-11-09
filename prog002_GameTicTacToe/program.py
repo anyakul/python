@@ -39,7 +39,7 @@ def check_draw(nums):
     for key, val in nums.items():
         if val == 'x' or val == 'o':
             count_move += 9
-    if count_move == 9 and check_win(nums) == False:
+    if count_move == 9 and not check_win(nums):
         return True
     else:
         return False
@@ -72,10 +72,10 @@ def get_num(id_player, computers_move):
 def do_move(nums, num, id_player, count_move):
     nums[num] = id_player
 
-    if check_win(nums) == True:
+    if check_win(nums):
         print(f'Выиграл {id_player}')
         id_player = 'no'
-    elif check_draw(nums, count_move) == True:
+    elif check_draw(nums, count_move):
         print("Ничья")
         id_player = 'no'
     else:

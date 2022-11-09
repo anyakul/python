@@ -3,8 +3,8 @@ import time
 import telebot
 
 
-data = open('confident/token.txt', 'r')
-text = data.read()
+with open('confident/token.txt') as f:
+    text = f.read()
 bot = telebot.TeleBot(text)
 
 start_text = f'''Игра с конфeтами. Правила игры:

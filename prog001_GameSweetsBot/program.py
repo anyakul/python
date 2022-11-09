@@ -42,7 +42,7 @@ def player_move(sum):
         input(f'Вы можете взять от {MIN_CANDY_STEP} до {max_step} конфет: '))
     check_input(num, max_step)
 
-    while check_input(num, max_step) == False:
+    while not check_input(num, max_step):
         num = int(
             input(f'Вы можете взять от {MIN_CANDY_STEP} до {max_step} конфет: '))
         check_input(num, max_step)
@@ -77,12 +77,12 @@ def play_game(mode):
     print(f"Победу одержал {PLAYERS_NAMES[1 if id_player == 2 else 2]}")
 
 
-#mode_num = int(input('Выберите режим (1 - с компьютером, 2 - с человеком): '))
+mode_num = int(input('Выберите режим (1 - с компьютером, 2 - с человеком): '))
 
-#if mode_num == 1:
-##    mode = MODE_1
-#if mode_num == 2:
- #   mode = MODE_2
+if mode_num == 1:
+    mode = MODE_1
+if mode_num == 2:
+    mode = MODE_2
 mode = MODE_2
 
 #move = randint(0, 1)

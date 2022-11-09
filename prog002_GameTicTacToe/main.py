@@ -4,8 +4,9 @@ import telebot
 
 player_move = get_first_move()
 
-data = open('confident/token.txt', 'r')
-text = data.read()
+
+with open('confident/token.txt') as f:
+    text = f.read()
 bot = telebot.TeleBot(text)
 
 
@@ -20,7 +21,7 @@ def main(message):
     count_move = 0
     move_time = 10
 
-    while check_win(nums) != True and check_draw(nums, count_move) != True:
+    while not check_win(nums) and not check_draw(nums, count_move):
         if id_player == computer_move:
             nums[computers_move(nums)] = computer_move
         elif id_player != computer_move:
@@ -29,10 +30,10 @@ def main(message):
             bot.register_next_step_handler(msg, move)
             time.sleep(move_time)
         count_move += 1
-        if check_win(nums) != True and check_draw(nums, count_move) != True:
+        if not check_win(nums) and not check_draw(nums, count_move):
             bot.send_message(message.chat.id, show_field(nums))
             id_player = X if id_player == O else O
-    if check_win(nums) == True or check_draw(nums, count_move) == True:
+    if check_win(nums) or check_draw(nums, count_move):
         bot.send_message(message.chat.id, show_field(nums))
         res_str = get_res_str(id_player, nums, count_move)
         bot.send_message(message.chat.id, text=res_str)

@@ -5,7 +5,6 @@
 
 def get_middle_letter(str):
     middle_index_len = int(len(str) / 2)
-    print(str[middle_index_len])
 
     if str[middle_index_len] == str[0]:
         print(str[1:-1])

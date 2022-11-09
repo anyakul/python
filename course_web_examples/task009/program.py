@@ -5,11 +5,11 @@
 
 def check_guests(num):
     if num > 50:
-        (print('Ресторан'))
+        print('Ресторан')
     elif 20 < num < 50:
-        (print('Кафе'))
+        print('Кафе')
     else:
-        (print('Дома'))
+        print('Дома')
 
 
 num_guests = int(input('Введите число гостей: '))

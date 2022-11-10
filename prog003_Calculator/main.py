@@ -8,8 +8,6 @@ data = open('confident/token.txt', 'r')
 token = data.read()
 bot = telebot.TeleBot(token)
 
-sign = "+"
-
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -31,7 +29,7 @@ def move(message):
                 current_lst.append(str(current_num))
                 result = get_result(result, sign, current_num)
                 bot.send_message(
-                    message.chat.id, f'Результат: {result}.\n Знак:')
+                    message.chat.id, f'Результат: {result}:')
         else:
             bot.send_message(
                 message.chat.id, f'Введите число')
@@ -43,10 +41,11 @@ def move(message):
         elif message.text == '=':
             bot.send_message(
                 message.chat.id, f'{" ".join(current_lst)} = {str(result)}')
-            result = 0
+            bot.send_message(
+                message.chat.id, 'Наберите /start чтобы начать заново. Или число чтобы продолжить')
         else:
             bot.send_message(
-                message.chat.id, f'Введите знак:')
+                message.chat.id, f'Знак:')
 
 
 bot.polling(none_stop=True)

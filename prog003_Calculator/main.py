@@ -42,7 +42,7 @@ def move(message):
             bot.send_message(
                 message.chat.id, f'{" ".join(current_lst)} = {str(result)}')
             bot.send_message(
-                message.chat.id, 'Наберите /start чтобы начать заново. Или число чтобы продолжить')
+                message.chat.id, 'Наберите /start чтобы начать заново. Или знак чтобы продолжить')
         else:
             bot.send_message(
                 message.chat.id, f'Знак:')

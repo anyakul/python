@@ -1,5 +1,3 @@
-import telebot
-
 signs = ["+", "-", "*", "/"]
 
 rules = '''Калькулятор.

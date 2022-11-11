@@ -3,20 +3,20 @@
 from random import randint
 
 
-def get_random(count, min, max):
+def get_random(count, min_num, max_num):
     result = []
 
-    for el in range(0, count + 1):
-        result.append(str(randint(min, max)))
+    for el in range(count + 1):
+        result.append(randint(min_num, max_num))
 
     return result
 
 
-def mix_list(my_list):
-    result = my_list[:]
+def mix_list(lst):
+    result = lst[:]
 
     for i in range(count + 1):
-        index = randint(0, len(my_list) - 1)
+        index = randint(0, len(lst) - 1)
         temp = result[i]
         result[i] = result[index]
         result[index] = temp
@@ -25,11 +25,10 @@ def mix_list(my_list):
 
 
 count = int(input('Число чисел: '))
-min = int(input('Число min: '))
-max = int(input('Число max: '))
+min_num = int(input('Число min: '))
+max_num = int(input('Число max: '))
 
-my_list = get_random(count, min, max)
-print(", ".join(my_list), end=". ")
-print(" ")
-result = mix_list(my_list)
-print(", ".join(result), end=".")
+lst = get_random(count, min_num, max_num)
+print(lst)
+result = mix_list(lst)
+print(result)

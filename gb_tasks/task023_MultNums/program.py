@@ -14,7 +14,7 @@ def get_multi(lst):
     if lst_len % 2 == 1:
         res_len = res_len + 1
 
-    for i in range(0, int(res_len)):
+    for i in range(int(res_len)):
         res.append(lst[i] * lst[j])
         j -= 1
 

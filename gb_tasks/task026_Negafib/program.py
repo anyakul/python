@@ -2,38 +2,32 @@
 # для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
 
 
-def get_negafib(num):
-    my_list = []
+def multiply(x): return x * (-1)
+
+
+def get_fib(num):
+    result = []
     index = 0
 
-    for i in range(0, num + 1):
-        if index == 0:
-            res = 0
-        elif index == -1:
+    for i in range(num + 1):
+        if i == 0 or i == 1:
             res = 1
         else:
-            res = ((-1) ** (i + 1)) * \
-                (abs(my_list[i - 2]) + abs(my_list[i - 1]))
-        my_list.append(res)
+            res = result[i - 2] + result[i - 1]
+        result.append(res)
         index -= 1
 
-    return my_list
+    return result
 
 
-def get_fib(my_list):
-    res = []
-
-    for el in my_list:
-        if el != 0:
-            res.append(abs(el))
-
-    return res
+def get_negafib(lst):
+    return list(map(multiply, lst))
 
 
 num = int(input('Число: '))
 
-res1 = get_negafib(num)
-res2 = get_fib(res1)
-res1.reverse()
-res = res1 + res2
-print(res)
+lst1 = get_fib(num)
+lst2 = get_negafib(lst1)
+lst2.reverse()
+result = lst2 + lst1
+print(result)

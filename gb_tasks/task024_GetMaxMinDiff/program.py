@@ -8,7 +8,7 @@ def get_diff(lst):
     min_num = round(lst[0] % 1, 2)
     max_num = round(lst[0] % 1, 2)
 
-    for i in range(0, int(len(lst))):
+    for i in range(int(len(lst))):
         if round(lst[i] % 1, 2) > max_num:
             max_num = round(lst[i] % 1, 2)
         elif round(lst[i] % 1, 2) < min_num:

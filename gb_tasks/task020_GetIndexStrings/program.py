@@ -18,12 +18,12 @@ list5 = []
 str5 = "йцу"
 
 
-def get_index_string(my_list, str):
+def get_index_string(lst, str):
     index = -1
     count = 0
 
-    for i in range(0, len(my_list)):
-        if my_list[i] == str:
+    for i in range(len(lst)):
+        if lst[i] == str:
             count += 1
 
             if (count == 2):

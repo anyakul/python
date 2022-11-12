@@ -4,11 +4,10 @@ import func
 
 
 def read_file(path):
-    f = open(path, 'r')
-    data = f.read() + ' '
-    f.close()
+    with open(path) as f:
+        text = f.read()
 
-    return data
+    return text
 
 
 def get_nums(data):
@@ -36,8 +35,6 @@ def get_sum(poly1, poly2):
         res.append(sum(list(el)))
 
     return res
-
-#res = get_sum(koef1, koef2)
 
 
 str1 = read_file('gb_tasks/task034_GetSumPolynomials/file1.txt')

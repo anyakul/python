@@ -17,4 +17,5 @@ def calc_factor(num):
 
 accurancy = float(input('Введите необходимую точность: '))
 res = round(pi, calc_factor(accurancy))
+
 print(res)

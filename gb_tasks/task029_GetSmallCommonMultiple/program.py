@@ -39,9 +39,7 @@ def get_common_multiple(lst1, lst2):
 
 
 def get_common_multiple_new(lst1, lst2):
-    res = list(filter(lambda x: x in lst1 and x in lst2, lst1))
-
-    return res
+    return list(filter(lambda x: x in lst1 and x in lst2, lst1))
 
 
 num1 = int(input('Число 1: '))

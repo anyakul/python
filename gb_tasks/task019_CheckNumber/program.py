@@ -3,24 +3,18 @@
 import func
 
 
-def check_num(my_list, num):
-    result = False
-
-    for i in range(0, len(my_list)):
-        if my_list[i] == num:
-            result = True
-
-    return result
+def check_num(lst, num):
+    if num in lst:
+        return True
 
 
 count = int(input('Количество строк: '))
 num = input('Искомое число: ')
 
-my_list = func.input_strings(count)
-print(my_list)
-print(" ")
+lst = func.input_strings(count)
+print(lst)
 
-res = check_num(my_list, num)
+res = check_num(lst, num)
 
 if res:
     print(f"Да, число {num} есть в списке")

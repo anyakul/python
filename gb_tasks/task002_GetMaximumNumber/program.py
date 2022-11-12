@@ -2,30 +2,19 @@
 # 1, 4, 8, 7, 5 -> 8
 # 78, 55, 36, 90, 2 -> 90
 
+
 def input_numbers(x):
-    a = [x]
+    lst = []
 
     for i in range(x):
-        a.append(int(input(f"Введите значение: ")))
+        lst.append(int(input("Введите значение: ")))
 
-    return a
-
-
-def get_maximum_number(list):
-    max = list[0]
-
-    for i in list:
-        if i > max:
-            max = i
-
-    return max
+    return lst
 
 
 count = int(input('Введите количество чисел в списке: '))
-list = input_numbers(count)
+lst = input_numbers(count)
+max_num = max(lst)
 
-max = get_maximum_number(list)
-
-print(list)
-
-print(f'Максимальное число - {max}')
+print(lst)
+print(f'Максимальное число - {max_num}')

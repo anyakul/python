@@ -7,7 +7,7 @@
 def get_num_binary(num):
     result = ''
 
-    while (num > 0):
+    while num > 0:
         result += str(num % 2)
         num //= 2
 
@@ -16,4 +16,5 @@ def get_num_binary(num):
 
 num = int(input('Число: '))
 res = int(str(get_num_binary(num))[::-1])
+
 print(f"Число {num} в двоичной системе = {res}")

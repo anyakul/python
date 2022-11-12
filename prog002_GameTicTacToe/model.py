@@ -37,7 +37,11 @@ def check_win(nums):
         return False
 
 
-def check_draw(nums, count_move):
+def check_draw(nums):
+    count_move = 0
+    for key, value in nums.items():
+        if nums[key] == X or nums[key] == O:
+            count_move += 1
     if count_move == 9 and not check_win(nums):
         return True
     else:
@@ -45,7 +49,9 @@ def check_draw(nums, count_move):
 
 
 def check_input(nums, num):
-    if num < 1 and num > 10 or nums[num] == X or nums[num] == 0:
+    if num < 1 and num > 10:
+        return False
+    elif nums[num] == X or nums[num] == O:
         return False
     else:
         return True
@@ -62,10 +68,10 @@ def computers_move(nums):
     return num
 
 
-def get_res_str(id_player, nums, count_move):
+def get_res_str(nums, id_player):
     if check_win(nums):
         return f'Выиграл {id_player}. Наберите /start чтобы играть снова'
-    elif check_draw(nums, count_move):
+    elif check_draw(nums):
         return 'Ничья. Наберите /start чтобы играть снова'
 
 
